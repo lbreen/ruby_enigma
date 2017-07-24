@@ -6,35 +6,35 @@ Description: The enigma machine was a cypher machine used in the early 20th cent
 
 Process: The operator would enter a letter which was first substituted by the plugboard and would then pass through three rotors, being substituted each time. As the letter passed through the first rotor it would shift one position in order to scramble the potential letters further. Once the first rotor had completed one full revolution, it would trigger the second rotor to shift once. After passing through all the rotors, the signal would hit the reflector and be reflected back through the rotors to be substituted a further three times. Finally, the letter would be substituted once more by the plugboard, with the final encrypted letter illuminated on the lampboard.
 
-Letter = "A"
-Plugboard ( "A" => "G")
+Letter = 'A'
+Plugboard ( 'A' => 'G')
 
-Letter = "G"
-Rotor 3 ("G" => "D")
+Letter = 'G'
+Rotor 3 ('G' => 'D')
 
-Letter = "D"
-Rotor 2 ("D" => "W")
+Letter = 'D'
+Rotor 2 ('D' => 'W')
 
-Letter = "W"
-Rotor 1 ("W" => "Q")
+Letter = 'W'
+Rotor 1 ('W' => 'Q')
 
-Letter = "Q"
-Reflector ("Q" = > "H")
+Letter = 'Q'
+Reflector ('Q' = > 'H')
 
-Letter = "H"
-Rotor 1 ("H" => "P")
+Letter = 'H'
+Rotor 1 ('H' => 'P')
 
-Letter = "P"
-Rotor 2 ("P" => "Z")
+Letter = 'P'
+Rotor 2 ('P' => 'Z')
 
-Letter = "Z"
-Rotor 3 ("Z" => "R")
+Letter = 'Z'
+Rotor 3 ('Z' => 'R')
 
-Letter = "R"
-Plugboard ("R" => "U")
-Final letter = "U"
+Letter = 'R'
+Plugboard ('R' => 'U')
+Final letter = 'U'
 
-In the above example, the letter "A" is substituted for the letter "U" but, due to the turnover of the rotors, if the operator was to press "A" again a different letter could light up.
+In the above example, the letter 'A' is substituted for the letter 'U' but, due to the turnover of the rotors, if the operator was to press 'A' again a different letter could light up.
 
 Objectives:
 

@@ -1,8 +1,7 @@
 class Rotor
-
   def initialize(attr = {})
     @character_set = attr[:character_set]
-    @start_letter = attr[:start_letter].upcase || "A"
+    @start_letter = attr[:start_letter].upcase || 'A'
     set_starting_letter
   end
 
@@ -11,6 +10,6 @@ class Rotor
   end
 
   def substitute
-
+    # Substitute each letter
   end
 end

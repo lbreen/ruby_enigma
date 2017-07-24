@@ -7,8 +7,8 @@ key_settings = JSON.parse(File.read('lib/key_settings.json'))
 
 plugboard = Plugboard.new(key_settings['plugboard'])
 
-rotor_one = Rotor.new({character_set: key_settings['rotor_one'], start_letter: "C"})
+# rotor_one = Rotor.new(character_set: key_settings['rotor_one'], start_letter: 'C')
 
-controller = Controller.new({'plugboard' => plugboard})
+controller = Controller.new('plugboard' => plugboard)
 
 controller.start
