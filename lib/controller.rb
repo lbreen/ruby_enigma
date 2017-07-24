@@ -19,6 +19,6 @@ class Controller
   def build_settings
     key_settings = @view.request_new_key_settings('plugboard')
 
-    @plugboard.keys(key_settings)
+    @plugboard.update_keys(key_settings)
   end
 end
