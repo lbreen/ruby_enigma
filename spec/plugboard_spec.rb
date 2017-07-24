@@ -8,11 +8,30 @@ describe Plugboard do
   # Instantiate a new plugboard
   plugboard = Plugboard.new(key_settings['plugboard'])
 
-  it "intializes" do
-    # Retrieve first letter combination
-    first_letter = plugboard.keys.first
+  new_connections = {
+    "D" => "A",
+    "E" => "w",
+    "O" => "G"
+  }
 
-    expect(first_letter[0]).to eq("A")
+  connections = plugboard.connections.to_hash
+
+  it "returns the same letter, with no connections" do
+
+
+    letters = ('A'..'Z').to_a.sample(4)
+
+    letters.each { |letter| expect(connections[letter]).to eq(letter) }
+  end
+
+  it "can set plugboard connections" do
+    plugboard.update_connections(new_connections)
+
+    new_connections.each { |key, value| expect(connections[key]).to eq(value) }
+  end
+
+  it "can automatically set reverse connections" do
+    new_connections.each { |key, value| expect(connections[value]).to eq(key)}
   end
 end
 

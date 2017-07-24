@@ -1,18 +1,18 @@
 class Plugboard
-  attr_reader :keys
+  attr_reader :connections
 
-  def initialize(keys)
-    @keys = keys
+  def initialize(connections)
+    @connections = connections
   end
 
-  def update_keys(settings)
-    settings.split(', ').each do |key_pair|
-      @keys[key_pair.chars[0]] = key_pair.chars[1]
-      @keys[key_pair.chars[1]] = key_pair.chars[0]
-    end
+  def update_connections(settings)
+    # settings.split(', ').each do |key_pair|
+    #   @connections[key_pair.chars[0]] = key_pair.chars[1]
+    #   @connections[key_pair.chars[1]] = key_pair.chars[0]
+    # end
   end
 
   def substitute!(letter)
-    @keys[letter]
+    @connections[letter]
   end
 end
