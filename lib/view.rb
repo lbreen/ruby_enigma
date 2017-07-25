@@ -10,11 +10,12 @@ class View
     puts "Message: #{message}"
   end
 
-  def request_new_key_settings(component)
-    puts "Please enter the key settings for the #{component}."
-    puts 'Each key pair should be seperated by commas and a space'
-    puts 'Eg -> AB, BD, GT, RF...'
-    print '>'
-    gets.chomp.upcase
+  def request_new_plugboard_settings
+    puts 'Please enter the key settings for the plugboard.'
+    puts 'Enter a key pair and hit ENTER.'
+    puts "Type 'NEXT' when you have finished."
+    puts 'Eg -> AB or ST'
+    print '> '
+    gets.strip.upcase.split('')
   end
 end

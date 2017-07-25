@@ -7,7 +7,7 @@ describe Plugboard do
 
   # Instantiate a new plugboard
   plugboard = Plugboard.new(key_settings['plugboard'])
-  new_connections = { "D" => "A", "E" => "w", "O" => "G" }
+  new_connections = { "D" => "A", "E" => "W", "O" => "G" }
   connections = plugboard.connections.to_hash
 
   it "returns the same letter, with no connections" do
@@ -27,8 +27,10 @@ describe Plugboard do
   end
 
   it "should not be able to overwrite an existing plugboard connection" do
-    new_connections = {"D" => "A", "A" => "E"}
+    existing_connections = [{"D" => "A", "R" => "A"}, {"R" => "U", "U" => "E"}]
 
-    expect(plugboard.update_connections(new_connections)).to eq(false)
+    existing_connections.each_with_index do |connection, index|
+      expect(plugboard.update_connections(connection)).to eq(false)
+    end
   end
 end

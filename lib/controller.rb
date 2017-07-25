@@ -6,19 +6,26 @@ class Controller
     build_plugboard
   end
 
-  def start
-    message = @view.request_message
+  # def start
+  #   message = @view.request_message
 
-    substituted_letters = message.gsub(' ', '').chars.map { |letter| @plugboard.substitute!(letter) }
+  #   substituted_letters = message.gsub(' ', '').chars.map { |letter| @plugboard.substitute!(letter) }
 
-    @view.display_message(substituted_letters.join)
-  end
+  #   @view.display_message(substituted_letters.join)
+  # end
 
   private
 
   def build_plugboard
-    key_settings = @view.request_new_key_settings('plugboard')
+    key_settings = {}
 
-    @plugboard.update_keys(key_settings)
+    response = @view.request_new_plugboard_settings
+
+    until response.join == 'NEXT'
+      key_settings[response[0]] = response[1]
+      response = @view.request_new_plugboard_settings
+    end
+
+    @plugboard.update_connections(key_settings)
   end
 end

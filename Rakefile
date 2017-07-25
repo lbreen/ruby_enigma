@@ -6,4 +6,9 @@ task :rubocop do
   sh 'rubocop --format simple || true'
 end
 
+desc 'Run the program'
+task :run do
+  ruby 'lib/app.rb'
+end
+
 task default: [:rubocop, :spec]
