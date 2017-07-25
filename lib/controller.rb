@@ -1,34 +1,31 @@
 require_relative 'view'
-
 class Controller
   def initialize(attr = {})
     @plugboard = attr['plugboard']
     @view = View.new
-    update_plugboard_key_settings
+    build_plugboard
   end
 
-  def start
-    message = @view.request_message
+  # def start
+  #   message = @view.request_message
 
-    substituted_letters = message.gsub(" ", "").chars.map { |letter| plugboard_substitution!(letter) }
+  #   substituted_letters = message.gsub(' ', '').chars.map { |letter| @plugboard.substitute!(letter) }
 
-    @view.display_message(substituted_letters.join)
-  end
+  #   @view.display_message(substituted_letters.join)
+  # end
 
   private
 
-  def plugboard_substitution!(letter)
-    letter = @plugboard.keys[letter]
-  end
+  def build_plugboard
+    key_settings = {}
 
-  def update_plugboard_key_settings
-    input = @view.request_new_key_settings("plugboard")
+    response = @view.request_new_plugboard_settings
 
-    input.split(", ").each do |key_pair|
-      @plugboard.keys[key_pair.chars[0]] = key_pair.chars[1]
-      @plugboard.keys[key_pair.chars[1]] = key_pair.chars[0]
+    until response.join == 'NEXT'
+      key_settings[response[0]] = response[1]
+      response = @view.request_new_plugboard_settings
     end
 
-    p @plugboard.keys
+    @plugboard.update_connections(key_settings)
   end
 end

@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - Rakefile
+    - .rspec
+    - spec/**
+Metrics/LineLength:
+  Enabled: false
+Documentation:
+  Enabled: false
