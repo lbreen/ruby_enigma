@@ -1,20 +1,17 @@
-class Rotor
+require_relative 'component'
+
+class Rotor < Component
   attr_reader :start_letter, :rotor_number, :first_letter
 
   def initialize(attr = {})
     @rotor_number = attr[:rotor_number].upcase
-    @characters = get_key_settings(@rotor_number)
+    @characters = open_json["rotor_#{@rotor_number.downcase}"] # open_json inherited from Component class
     @start_letter = (attr[:start_letter] || 'A').upcase
     set_start_letter # Rotate the @characters array until @characters.first == start_letter
     @first_letter = @start_letter
   end
 
-  def substitute(index)
-    rotate!
-    @characters.find_index(@characters[index].rotate)
-  end
-
-  private
+  # Substitute method is inherited from Component class
 
   def rotate!
     # Rotate the @characters array and update the @first_letter
@@ -22,13 +19,7 @@ class Rotor
     @first_letter = @characters.first[0]
   end
 
-  def get_key_settings(rotor_number)
-    open_json["rotor_#{rotor_number.downcase}"]
-  end
-
-  def open_json
-    JSON.parse(File.read('lib/key_settings.json'))
-  end
+  private
 
   def set_start_letter
     @characters.rotate! until @characters.first[0] == @start_letter

@@ -1,4 +1,4 @@
-require 'reflector'
+require 'models/reflector'
 
 describe "Reflector" do
 
