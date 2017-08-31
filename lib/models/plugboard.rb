@@ -1,23 +1,23 @@
-class Plugboard
-  attr_reader :connections
+require_relative 'component'
 
-  def initialize(connections)
-    @connections = connections
+class Plugboard < Component
+  attr_reader :characters
+
+  def initialize
+    @characters = open_json['plugboard'] # open_json is inherited from Component class
   end
 
-  def update_connections(settings)
-    # Return false if the connections are invalid
+  def update_characters(settings)
+    # Return false if the character pairs are invalid
     return false unless valid?(settings)
 
     settings.each do |key, value|
-      @connections[key] = value
-      @connections[value] = key
+      @characters[key] = value
+      @characters[value] = key
     end
   end
 
-  def substitute(letter)
-    @connections[letter]
-  end
+  # Substitute class is inherited from Component class
 
   private
 

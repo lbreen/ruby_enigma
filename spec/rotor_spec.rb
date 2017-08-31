@@ -1,5 +1,4 @@
-require 'rotor'
-require 'json'
+require 'models/rotor'
 
 describe Rotor do
 
@@ -29,24 +28,28 @@ describe Rotor do
     # character_index = 4
 
     rotor = Rotor.new(rotor_number: 'I', start_letter: 'K')
-
+    rotor.rotate!
     expect(rotor.substitute(4)).to eq(11)
   end
 
   it "should substitute the letter in reverse" do
     rotor = Rotor.new(rotor_number: 'I', start_letter: 'K')
-
+    rotor.rotate!
     expect(rotor.substitute(11)).to eq (4)
   end
 
-  it "should rotate before every substitution" do
-    start_letter = alphabet.sample
-    next_letter = (start_letter.ord + 1).chr
+  # it "should rotate before every substitution" do
+  #   start_letter = alphabet.sample
+  #   if start_letter == 'Z'
+  #     next_letter = 'A'
+  #   else
+  #     next_letter = (start_letter.ord + 1).chr
+  #   end
 
-    rotor = Rotor.new(rotor_number: 'I', start_letter: start_letter)
+  #   rotor = Rotor.new(rotor_number: 'I', start_letter: start_letter)
 
-    expect(rotor.first_letter).to eq(start_letter)
-    rotor.substitute(4)
-    expect(rotor.first_letter).to eq(next_letter)
-  end
+  #   expect(rotor.first_letter).to eq(start_letter)
+  #   rotor.substitute(4)
+  #   expect(rotor.first_letter).to eq(next_letter)
+  # end
 end

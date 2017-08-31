@@ -1,17 +1,12 @@
-class Reflector
+require_relative 'component'
+
+class Reflector < Component
   def initialize
     @characters = open_json['reflector']
   end
 
-  def substitute(index)
-    @characters.find_index(@characters[index].rotate)
-  end
-
-  private
-
-  def open_json
-    JSON.parse(File.read('lib/key_settings.json'))
-  end
+  # Substitute method is inherited from Component class
+  # open_json method is inherited from Component class
 end
 
 # In a physical engima machine, once the electrical signal has passed through
