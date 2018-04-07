@@ -31,6 +31,10 @@ class PlugboardsController
     end
   end
 
+  def substitute(characters)
+    characters.map { |char| @plugboard.characters[char] }
+  end
+
   private
 
   def valid?(connections)

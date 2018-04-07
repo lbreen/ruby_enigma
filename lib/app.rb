@@ -15,8 +15,10 @@ p plugboard.characters
 #     1. Rotor numbers (1 - 7)
 #     2. Start letters
 # 3. Enter message
-message = view.request_message
+plaintext_characters = view.request_message.split('')
 # 4. Plugboard substitution
+plaintext_characters = plugboards_controller.substitute(plaintext_characters)
+p plaintext_characters
 # 5. Rotor three substitution
 # 6. Rotor two substitution
 # 7. Rotor one substitution
