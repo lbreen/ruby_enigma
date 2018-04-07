@@ -5,6 +5,6 @@ class PlugboardView
     puts "Type 'NEXT' when you have finished."
     puts 'Eg -> AB or ST'
     print '> '
-    gets.strip.upcase.split('')
+    gets.strip.upcase
   end
 end

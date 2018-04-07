@@ -1,15 +1,21 @@
 require_relative 'controllers/plugboards_controller'
+require_relative 'models/plugboard'
+require_relative 'views/view'
 
 puts 'Starting...'
+plugboard = Plugboard.new
+plugboards_controller = PlugboardsController.new(plugboard)
+view = View.new
 
 ### Pseudo-code ###
 # 1. Enter plugboard settings
-plugboards_controller = PlugboardsController.new
 plugboards_controller.edit
+p plugboard.characters
 # 2. Enter rotor settings
 #     1. Rotor numbers (1 - 7)
 #     2. Start letters
 # 3. Enter message
+message = view.request_message
 # 4. Plugboard substitution
 # 5. Rotor three substitution
 # 6. Rotor two substitution

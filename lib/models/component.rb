@@ -1,4 +1,5 @@
 require 'json'
+require 'pry-byebug'
 
 class Component
   # This is the parent class for all other models
